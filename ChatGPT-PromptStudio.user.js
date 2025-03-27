@@ -60,7 +60,7 @@ function getPromptFromUrl(url) {
 (async function() {
 	'use strict';
 
-	const RAW_PROMPT_URL = 'https://gist.githubusercontent.com/Tosox/1b0707279dcf49ca2a297100a04e6f50/raw/10b7905b6f8c5b36dee4caf506771d26441ce0a2/prompt.txt';
+	const RAW_PROMPT_URL = 'https://gist.githubusercontent.com/Tosox/1b0707279dcf49ca2a297100a04e6f50/raw/prompt.txt';
 	const ICON_URL = 'https://github.com/Tosox/ChatGPT-PromptStudio/blob/master/assets/icon.png?raw=true';
 	const CACHE_KEY = 'promptstudio_prompt';
 	const CACHE_TIMESTAMP_KEY = 'promptstudio_prompt_timestamp';
