@@ -114,7 +114,7 @@ function getPromptFromUrl(url) {
 			});
 			return;
 		}
-		
+
 		if (content.includes(prompt)) {
 			return;
 		}
