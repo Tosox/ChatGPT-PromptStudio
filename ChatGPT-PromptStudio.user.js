@@ -16,6 +16,8 @@
 // @grant			GM_addStyle
 // @grant			GM_setValue
 // @grant			GM_getValue
+// @grant			GM_xmlhttpRequest
+// @connect			gist.githubusercontent.com
 // ==/UserScript==
 
 GM_addStyle(`
@@ -36,6 +38,25 @@ GM_addStyle(`
 	}
 `);
 
+function getPromptFromUrl(url) {
+	return new Promise((resolve, reject) => {
+		GM_xmlhttpRequest({
+			method: 'GET',
+			url: url,
+			onload: function(response) {
+				if (response.status === 200) {
+					resolve(response.responseText);
+				} else {
+					reject(new Error(`Failed to load prompt. Status: ${response.status}`));
+				}
+			},
+			onerror: function(err) {
+		  		reject(err);
+			}
+		});
+	});
+}
+
 (async function() {
 	'use strict';
 
@@ -52,7 +73,7 @@ GM_addStyle(`
 
 	if ((!prompt) || (now - lastFetch > FETCH_DELAY)) {
 		try {
-			const res = await fetch(RAW_PROMPT_URL);
+			const res = await getPromptFromUrl(RAW_PROMPT_URL);
 			prompt = await res.text();
 			await GM_setValue(CACHE_KEY, prompt);
 			await GM_setValue(CACHE_TIMESTAMP_KEY, now);
