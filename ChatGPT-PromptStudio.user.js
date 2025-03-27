@@ -66,7 +66,7 @@ function getPromptFromUrl(url) {
 	const CACHE_TIMESTAMP_KEY = 'promptstudio_prompt_timestamp';
 	const FETCH_DELAY = 7200000; // 2h
 
-	
+
 	const now = Date.now();
 	let prompt = await GM_getValue(CACHE_KEY, '');
 	let lastFetch = await GM_getValue(CACHE_TIMESTAMP_KEY, 0);
@@ -84,7 +84,7 @@ function getPromptFromUrl(url) {
 			});
 		}
 	}
-	
+
 	var button = document.createElement('button');
 
 	button.style.position = 'fixed';
