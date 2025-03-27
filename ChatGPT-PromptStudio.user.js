@@ -7,7 +7,7 @@
 // @updateURL		https://github.com/Tosox/ChatGPT-PromptStudio/releases/latest/download/ChatGPT-PromptStudio.user.js
 // @downloadURL		https://github.com/Tosox/ChatGPT-PromptStudio/releases/latest/download/ChatGPT-PromptStudio.user.js
 // @icon			https://github.com/Tosox/ChatGPT-PromptStudio/blob/master/assets/icon.png?raw=true
-// @description		A prompt injection tool for ChatGPT - designed for storytelling, roleplay, and prompt engineering
+// @description		A prompt injection tool for ChatGPT - designed for creative writing, storytelling and advanced prompt engineering
 // @version			1.0.0
 // @license			MIT
 // @copyright		Copyright (c) 2025 Tosox
