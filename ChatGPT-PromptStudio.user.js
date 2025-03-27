@@ -82,6 +82,7 @@ function getPromptFromUrl(url) {
 				text: 'Failed to load prompt from url',
 				timeout: 3000
 			});
+			return;
 		}
 	}
 
@@ -102,28 +103,34 @@ function getPromptFromUrl(url) {
 	image.src = ICON_URL;
 	button.appendChild(image);
 
-	var enterEvent = new KeyboardEvent('keydown', {
-		key: 'Enter',
-		keyCode: 13,
-		which: 13,
-		bubbles: true,
-		cancelable: true
-	});
-
 	button.addEventListener('click', function() {
 		var textarea = document.querySelector('#prompt-textarea p');
-		var content = textarea?.textContent;
+		var content = textarea?.innerText?.trim();
 
-		if (((!content) || (content.includes(prompt))) && (content.trim() === '')) {
+		if ((!content) || (content === '')) {
 			GM_notification({
 				text: 'Please ensure to enter a prompt before clicking the button.',
 				timeout: 3000
 			});
 			return;
 		}
+		
+		if (content.includes(prompt)) {
+			return;
+		}
 
-		textarea.textContent = `${prompt.trim()} ${content.trim()}`;
-		textarea.dispatchEvent(enterEvent);
+		textarea.innerText = `${prompt} ${content}`;
+
+		setTimeout(() => {
+			textarea.dispatchEvent(new KeyboardEvent('keydown', {
+				key: 'Enter',
+				code: 'Enter',
+				keyCode: 13,
+				which: 13,
+				bubbles: true,
+				cancelable: true
+			}));
+		}, 100);
 
 		button.classList.add('zoom-effect');
 		setTimeout(() => button.classList.remove('zoom-effect'), 1000);
