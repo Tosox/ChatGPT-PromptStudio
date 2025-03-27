@@ -33,6 +33,7 @@ To use your own prompt:
 2. Create a new file and paste your desired prompt in plain text
 3. Copy the raw URL (e.g. `https://gist.githubusercontent.com/yourusername/abc123/raw/filename.txt`)
 4. Replace the `RAW_PROMPT_URL` value inside the script with your URL:
+
     ```javascript
     const RAW_PROMPT_URL = 'https://gist.githubusercontent.com/yourusername/abc123/raw/prompt.txt';
     ```
@@ -40,7 +41,7 @@ To use your own prompt:
 
 ### ⚠️ Important for new domains
 
-If your prompt is hosted outside `gist.githubusercontent.com`, you must also add an @connect directive to the top of your script:
+If your prompt is hosted outside `gist.githubusercontent.com`, you must also add a `@connect` directive to the top of your script:
 ```
 // @connect yourdomain.com
 ```
