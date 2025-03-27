@@ -73,14 +73,13 @@ function getPromptFromUrl(url) {
 
 	if ((!prompt) || (now - lastFetch > FETCH_DELAY)) {
 		try {
-			const res = await getPromptFromUrl(RAW_PROMPT_URL);
-			prompt = await res.text();
+			prompt = await getPromptFromUrl(RAW_PROMPT_URL);
 			await GM_setValue(CACHE_KEY, prompt);
 			await GM_setValue(CACHE_TIMESTAMP_KEY, now);
 		} catch (e) {
 			console.error('Failed to fetch prompt:', e);
 			GM_notification({
-				text: 'Failed to load prompt from Gist',
+				text: 'Failed to load prompt from url',
 				timeout: 3000
 			});
 		}
